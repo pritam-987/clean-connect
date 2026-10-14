@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CleanConnect — Report it. Track it. Clean it.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <button class="logo" data-v="home" aria-label="CleanConnect home"><span class="leaf" aria-hidden="true"></span>CleanConnect</button>
+  <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+    <button data-v="home">Home</button>
+    <button data-v="explore">Explore Reports</button>
+    <button data-v="mine">My Reports</button>
+    <button data-v="area">Area Dashboard</button>
+    <button data-v="tasks" data-roles="team admin">Team Tasks</button>
+    <button data-v="report" class="cta">Report Garbage</button>
+  </nav>
+  <div class="roles">
+    <span id="who" class="mute"></span>
+    <button id="auth" class="ghost">Sign in</button>
+  </div>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer>
+  <p><strong>Prototype.</strong> Data is stored in the server's data.json. Ratings and statistics come from demo use and are not verified evidence of real service. Nobody is notified or dispatched.</p>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<dialog id="dlg"><form method="dialog"><p id="dlgMsg"></p><div class="row"><button value="cancel" class="ghost">Cancel</button><button value="ok" class="cta">Confirm</button></div></form></dialog>
+
+<template id="tReport">
+  <section class="narrow">
+    <h1>Report garbage</h1>
+    <form id="frm" novalidate class="card form">
+      <label>Title<input name="title" maxlength="80"><small class="err" data-for="title"></small></label>
+      <label>Category<select name="category"></select><small class="err" data-for="category"></small></label>
+      <label>Description<textarea name="description" rows="3" maxlength="500"></textarea><small class="err" data-for="description"></small></label>
+      <label>Location or nearby landmark<input name="location" maxlength="80"><small class="err" data-for="location"></small></label>
+      <label>Ward<select name="ward"></select><small class="err" data-for="ward"></small></label>
+      <label>Photograph (JPG, PNG or WebP)<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"><small class="err" data-for="photo"></small></label>
+      <img id="prev" alt="Photo preview" hidden>
+      <label>Coordinates (optional)<span class="row"><input name="coords" placeholder="lat, lng"><button type="button" id="geo" class="ghost">Use my location</button></span><small class="err" data-for="coords"></small></label>
+      <label class="check"><input type="checkbox" name="consent"> I understand that my photo and location details may be visible to other users of this demo.</label><small class="err" data-for="consent"></small>
+      <button class="cta" type="submit">Submit report</button>
+    </form>
+  </section>
+</template>
+<script src="script.js"></script>
+</body>
+</html>
